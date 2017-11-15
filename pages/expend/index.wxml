@@ -1,0 +1,72 @@
+<!--index.wxml-->
+<scroll-view class="m-container" scroll-y="true">
+  <view class="expend-type-item" wx:for="{{expendList}}" wx:for-index="oneIndex" wx:for-item="oneItem">
+    <!-- 一级标题  -->
+    <view class="expend-item expend-item-top" bindtap="showTwoList" data-oneindex="{{oneIndex}}">
+      <text class="expend-label">{{oneItem.expendName}}</text>
+      <view class="expend-unfold">
+        <text class="{{!oneItem.isShowList ? 'unfold' : 'unfold active'}}"></text>
+      </view>
+    </view>
+    <view class="expend-typeDetail-list" hidden="{{!oneItem.isShowList}}" wx:for="{{oneItem.twoList}}" wx:for-index="twoIndex" wx:for-item="twoItem">
+      <!-- 二级标题  -->
+      <view class="expend-item">
+        <text class="expend-label">{{twoItem.expendName}}</text>
+        <input class="expend-input" type="digit" placeholder="人数" bindblur="changeOutArea" value="{{twoItem.area}}" data-oneindex="{{oneIndex}}" data-twoindex="{{twoIndex}}"></input>
+        <input class="expend-input" type="digit" placeholder="单价" bindblur="changeOutPrice" value="{{twoItem.unitPrice}}" data-oneindex="{{oneIndex}}" data-twoindex="{{twoIndex}}"></input>
+        <view class="expend-unfold" bindtap="showThreeList" data-oneindex="{{oneIndex}}" data-twoindex="{{twoIndex}}">
+          <text wx:if="{{twoItem.detailList}}" class="{{!twoItem.isShowList ? 'unfold' : 'unfold active'}}"></text>
+        </view>
+      </view>
+      <view class="total">
+        合计/月: {{twoItem.total}}
+      </view>
+      <view class="expend-detail-list" wx:if="{{twoItem.detailList}}" wx:for="{{twoItem.detailList}}" wx:for-index="threeIndex" wx:for-item="threeItem" hidden="{{!twoItem.isShowList}}">
+        <view class="expend-item">
+          <!-- 三级标题  -->
+          <text class="expend-label">{{threeItem.expendName}}</text>
+          <input class="expend-input" bindblur="changeInArea" data-oneindex="{{oneIndex}}" data-twoindex="{{twoIndex}}" data-threeindex="{{threeIndex}}" type="digit" placeholder="人数"></input>
+          <input class="expend-input" bindblur="changeInPrice" data-oneindex="{{oneIndex}}" data-twoindex="{{twoIndex}}" data-threeindex="{{threeIndex}}" type="digit" placeholder="单价"></input>
+          <view class="expend-unfold" bindtap="removeOther" data-outIndex="{{expendTypeIdx}}" data-inIndex="{{expendDetailIdx}}">
+            <text class="add" wx-if="{{threeItem.canRemove}}">x</text>
+          </view>
+        </view>
+        <view class="total">
+          合计/月: {{threeItem.total}}
+        </view>
+      </view>
+    </view>
+    <button class="addOne" wx-if="{{oneItem.isShowList}}" bindtap="addOne" data-oneindex="{{oneIndex}}">+</button>
+  </view>
+
+  <view class="additionList">
+    <view class="addition">
+      <text class="addition-label">税金</text>
+      <view class="select">
+        <text class="choose" bindtap="toggleSelect" data-type="taxes">{{taxes.list[taxes.index]}}%</text>
+        <view class="options" hidden="{{!taxes.isShow}}">
+          <text wx:for="{{taxes.list}}" bindtap="choodeSelect" data-index="{{index}}" data-type="taxes">{{item}}%</text>
+        </view>
+      </view>
+    </view>
+    <view class="addition">
+      <text class="addition-label">利润</text>
+      <view class="select">
+        <text class="choose" bindtap="toggleSelect" data-type="profit">{{profit.list[profit.index]}}%</text>
+        <view class="options" hidden="{{!profit.isShow}}">
+          <text wx:for="{{profit.list}}" bindtap="choodeSelect" data-index="{{index}}" data-type="profit">{{item}}%</text>
+        </view>
+      </view>
+    </view>
+    <view class="addition">
+      <text class="addition-label">不可预见费</text>
+      <view class="select">
+        <text class="choose" bindtap="toggleSelect" data-type="contingencies">{{contingencies.list[contingencies.index]}}%</text>
+        <view class="options" hidden="{{!contingencies.isShow}}">
+          <text wx:for="{{contingencies.list}}" bindtap="choodeSelect" data-index="{{index}}" data-type="contingencies">{{item}}%</text>
+        </view>
+      </view>
+    </view>
+  </view>
+  <button class="submit" bindtap="submit">提交测算</button>
+</scroll-view>

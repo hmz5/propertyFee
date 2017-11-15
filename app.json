@@ -1,0 +1,33 @@
+{
+  "pages": [
+    "pages/income/index",
+    "pages/count/index",
+    "pages/expend/index"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "WeChat",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "color": "#a9b7b7",
+    "selectedColor": "#eb4f38",
+    "backgroundColor": "#ffffff",
+    "position": "top",
+    "list": [
+      {
+        "pagePath": "pages/income/index",
+        "text": "收入"
+      },
+      {
+        "pagePath": "pages/expend/index",
+        "text": "支出"
+      },
+      {
+        "pagePath": "pages/count/index",
+        "text": "计算"
+      }
+    ]
+  }
+}

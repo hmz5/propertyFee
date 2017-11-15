@@ -1,0 +1,153 @@
+/**index.wxss**/
+
+.m-table {
+  background: #fff;
+}
+
+.table-title {
+  height: 80rpx;
+  text-align: center;
+  font-size: 32rpx;
+  line-height: 80rpx;
+  border-bottom: 1rpx solid rgba(0, 0, 0, 0.1);
+  color: #333;
+}
+
+.right-content {
+  flex: 1;
+  display: flex;
+  border-left: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.table-content {
+
+}
+
+.table-header {
+  height: 70rpx;
+  display: flex;
+  font-size: 20rpx;
+  color: #666;
+  border-bottom: 1rpx solid rgba(0, 0, 0, 0.1);
+}
+
+.table-header text {
+  border-right: 1px solid rgba(0, 0, 0, 0.1);
+  text-align: center;
+  height: 70rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.u-number {
+  width: 45rpx;
+  flex-shrink: 0;
+  box-sizing: content-box;
+  padding: 0 10rpx;
+  height: 100%;
+  border: none!important;
+}
+
+.u-project {
+  width: 30%;
+  text-align: center;
+  flex-shrink: 0;
+}
+
+.u-area, .u-unitPrice, .u-aggregate {
+  flex: 1;
+}
+
+.table-body {
+  display: flex;
+  font-size: 20rpx;
+  color: #999;
+  text-align: center;
+  align-items: center;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.table-body-list {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.table-body text {
+  /* height: 60rpx; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-right: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.table-body .right-content {
+  flex-direction: column;
+}
+
+.table-body-item {
+  display: flex;
+  height: 60rpx;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+.table-body-item:nth-last-of-type(1) {
+  border: none;
+}
+
+.table-count {
+  background: yellow;
+}
+
+.expendTable .table-body .table-body-item{
+   border: none; 
+}
+
+.expendTable .table-body .table-body-list:nth-last-of-type(1){
+   border: none; 
+}
+
+.expend-item {
+  height: auto;
+}
+
+.expend-item .u-project {
+  /* border-right: 1px solid rgba(0, 0, 0, 0.1); */
+}
+
+.expend-item>view {
+  display: flex;
+}
+
+.expend-item .detailList-tit text {
+  border: none;
+}
+
+.expend-item .detailList-tit {
+  width: 20rpx;
+  padding: 10rpx;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+}
+
+.expend-item .detailList {
+  flex: 1;
+  border-left: 1px solid rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.expend-item .detailList text {
+  width: 100%;
+  height: 60rpx;
+  border-right: none;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.expend-item .detailList text:nth-last-of-type(1) {
+  border: none;
+}
+
+.borderB {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1)!important;
+}

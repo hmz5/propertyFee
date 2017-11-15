@@ -1,0 +1,152 @@
+<!--index.wxml-->
+
+<scroll-view class="m-container" scroll-y="true">
+  <!-- 收入  -->
+  <view class="m-table">
+    <view class="table-title">收费项合计</view>
+    <view class="table-content">
+      <view class="table-header">
+        <text class="u-number">序号</text>
+        <view class="right-content">
+          <text class="u-project">项目</text>
+          <text class="u-area">面积</text>
+          <text class="u-unitPrice">单价/平方</text>
+          <text class="u-aggregate">月应缴费小计</text>
+        </view>
+      </view>
+      <view class="table-body">
+        <text class="u-number">收入</text>
+        <view class="right-content">
+          <view class="table-body-list" wx:for="{{incomeList}}" wx:for-index="outIndex" wx:for-item="outItem">
+            <view class="table-body-item" wx:for="{{outItem.detailList}}">
+              <text class="u-project">{{item.incomeName}}</text>
+              <text class="u-area">{{item.area}}</text>
+              <text class="u-unitPrice">{{item.unitPrice}}</text>
+              <text class="u-aggregate">{{item.total}}</text>
+            </view>
+          </view>
+          <view class="table-body-item table-count">
+            <text class="u-project">小计</text>
+            <text class="u-area">{{incomeCount.area}}</text>
+            <text class="u-unitPrice"></text>
+            <text class="u-aggregate">{{incomeCount.monthCount}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 支出  -->
+  <view class="m-table expendTable">
+    <view class="table-title">支出合计</view>
+    <view class="table-content">
+      <view class="table-header">
+        <text class="u-number">序号</text>
+        <view class="right-content">
+          <text class="u-project">项目</text>
+          <text class="u-area">数量</text>
+          <text class="u-unitPrice">单价</text>
+          <text class="u-aggregate">月应缴费小计</text>
+        </view>
+      </view>
+      <view class="table-body" wx:for="{{expendData.expendList}}" wx:for-index="outIndex" wx:for-item="outItem">
+        <text class="u-number">{{outItem.expendName}}</text>
+        <view class="right-content">
+          <view class="table-body-list" wx:for="{{outItem.twoList}}" wx:for-index="twoIndex" wx:for-item="twoItem">
+            <view class="table-body-item expend-item">
+              <view class="u-project">
+                <view class="detailList-tit">{{twoItem.expendName}}</view>
+                <view class="detailList">
+                  <text>基本支出</text>
+                  <text wx:for="{{twoItem.detailList}}">{{item.expendName}}</text>
+                </view>
+              </view>
+              <view class="u-area">
+                <view class="detailList">
+                  <text>{{twoItem.area}}</text>
+                  <text wx:for="{{twoItem.detailList}}">{{item.area}}</text>
+                </view>
+              </view>
+              <view class="u-unitPrice">
+                <view class="detailList">
+                  <text>{{twoItem.unitPrice}}</text>
+                  <text wx:for="{{twoItem.detailList}}">{{item.unitPrice}}</text>
+                </view>
+              </view>
+              <view class="u-aggregate">
+                <view class="detailList">
+                  <text>{{twoItem.total}}</text>
+                  <text wx:for="{{twoItem.detailList}}">{{item.total}}</text>
+                </view>
+              </view>
+            </view>
+          </view>
+          <view class="table-body-item borderB" wx:if="{{outIndex === expendData.expendList.length - 1}}">
+            <text class="u-project">税金{{expendData.taxes.list[expendData.taxes.index]}}</text>
+            <text class="u-area">{{expendCount.area}}</text>
+            <text class="u-unitPrice"></text>
+            <text class="u-aggregate">{{expendCount.taxes}}</text>
+          </view> 
+          <view class="table-body-item borderB" wx:if="{{outIndex === expendData.expendList.length - 1}}">
+            <text class="u-project">利润{{expendData.profit.list[expendData.profit.index]}}</text>
+            <text class="u-area">{{expendCount.area}}</text>
+            <text class="u-unitPrice"></text>
+            <text class="u-aggregate">{{expendCount.profit}}</text>
+          </view> 
+          <view class="table-body-item borderB" wx:if="{{outIndex === expendData.expendList.length - 1}}">
+            <text class="u-project">不可预见费{{expendData.contingencies.list[expendData.contingencies.index]}}</text>
+            <text class="u-area">{{expendCount.area}}</text>
+            <text class="u-unitPrice"></text>
+            <text class="u-aggregate">{{expendCount.contingencies}}</text>
+          </view> 
+          <view class="table-body-item table-count" wx:if="{{outIndex === expendData.expendList.length - 1}}">
+            <text class="u-project">小计</text>
+            <text class="u-area">{{expendCount.area}}</text>
+            <text class="u-unitPrice"></text>
+            <text class="u-aggregate">{{expendCount.monthCount}}</text>
+          </view> 
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 汇总  -->
+  <view class="m-table">
+    <view class="table-title">汇总</view>
+    <view class="table-content">
+      <view class="table-header">
+        <text class="u-number">序号</text>
+        <view class="right-content">
+          <text class="u-project">项目</text>
+          <text class="u-area">合计</text>
+          <text class="u-unitPrice">每平方米建筑面积</text>
+        </view>
+      </view>
+      <view class="table-body">
+        <text class="u-number">汇总</text>
+        <view class="right-content">
+          <view class="table-body-item">
+            <text class="u-project">总收入</text>
+            <text class="u-area">{{incomeCount.monthCount}}</text>
+            <text class="u-unitPrice">{{incomeCount.average}}</text>
+          </view>
+          <view class="table-body-item">
+            <text class="u-project">总支出</text>
+            <text class="u-area">{{expendCount.monthCount}}</text>
+            <text class="u-unitPrice"></text>
+          </view>
+          <view class="table-body-item">
+            <text class="u-project">盈亏</text>
+            <text class="u-area">{{incomeCount.monthCount - expendCount.monthCount}}</text>
+            <text class="u-unitPrice">{{addIncome}}</text>
+          </view>
+          <view class="table-body-item table-count">
+            <text class="u-project">物业费应收</text>
+            <text class="u-area"></text>
+            <text class="u-unitPrice">{{needIncome}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</scroll-view>
