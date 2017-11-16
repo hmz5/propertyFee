@@ -37,6 +37,8 @@ Page({
             countArea += Number(incomeList[i].detailList[j].area);
             countPrice += Number(incomeList[i].detailList[j].total);
           }
+          countArea += Number(incomeList[i].area);
+          countPrice += Number(incomeList[i].total);
         }
         console.log(countArea, countPrice);
         _this.setData({

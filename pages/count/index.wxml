@@ -18,6 +18,12 @@
         <text class="u-number">收入</text>
         <view class="right-content">
           <view class="table-body-list" wx:for="{{incomeList}}" wx:for-index="outIndex" wx:for-item="outItem">
+            <view class="table-body-item">
+              <text class="u-project">{{outItem.incomeName}}</text>
+              <text class="u-area">{{outItem.area}}</text>
+              <text class="u-unitPrice">{{outItem.unitPrice}}</text>
+              <text class="u-aggregate">{{outItem.total}}</text>
+            </view>
             <view class="table-body-item" wx:for="{{outItem.detailList}}">
               <text class="u-project">{{item.incomeName}}</text>
               <text class="u-area">{{item.area}}</text>
@@ -57,7 +63,7 @@
               <view class="u-project">
                 <view class="detailList-tit">{{twoItem.expendName}}</view>
                 <view class="detailList">
-                  <text>基本支出</text>
+                  <text></text>
                   <text wx:for="{{twoItem.detailList}}">{{item.expendName}}</text>
                 </view>
               </view>

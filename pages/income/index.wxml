@@ -3,8 +3,8 @@
   <view class="income-type-item" wx:for="{{incomeList}}" wx:for-index="incomeTypeIdx" wx:for-item="incomeTypeItem">
     <view class="income-item">
       <text class="income-label">{{incomeTypeItem.incomeName}}</text>
-      <input class="income-input" value="{{incomeTypeItem.area}}" type="digit" placeholder="面积" bindblur="changeOutArea" data-outIndex="{{incomeTypeIdx}}"></input>
-      <input class="income-input" value="{{incomeTypeItem.unitPrice}}" type="digit" placeholder="单价" bindblur="changeOutPrice" data-outIndex="{{incomeTypeIdx}}"></input>
+      <input class="income-input" type="digit" placeholder="面积" bindblur="changeOutArea" data-outIndex="{{incomeTypeIdx}}"></input>
+      <input class="income-input" type="digit" placeholder="单价" bindblur="changeOutPrice" data-outIndex="{{incomeTypeIdx}}"></input>
       <view class="income-unfold" bindtap="showList" data-showIndex="{{incomeTypeIdx}}">
         <text class="{{!incomeTypeItem.isShowList ? 'unfold' : 'unfold active'}}"></text>
       </view>
@@ -15,8 +15,8 @@
     <view class="income-detail-list" wx:for="{{incomeTypeItem.detailList}}" wx:for-index="incomeDetailIdx" wx:for-item="incomeDetailItem" hidden="{{!incomeTypeItem.isShowList}}">
       <view class="income-item">
         <text class="income-label">{{incomeDetailItem.incomeName}}</text>
-        <input class="income-input" value="{{incomeDetailItem.area}}" bindblur="changeInArea" data-outIndex="{{incomeTypeIdx}}" data-inIndex="{{incomeDetailIdx}}" type="digit" placeholder="面积"></input>
-        <input class="income-input" value="{{incomeDetailItem.unitPrice}}" bindblur="changeInPrice" data-outIndex="{{incomeTypeIdx}}" data-inIndex="{{incomeDetailIdx}}" type="digit" placeholder="单价"></input>
+        <input class="income-input" bindblur="changeInArea" data-outIndex="{{incomeTypeIdx}}" data-inIndex="{{incomeDetailIdx}}" type="digit" placeholder="面积"></input>
+        <input class="income-input" bindblur="changeInPrice" data-outIndex="{{incomeTypeIdx}}" data-inIndex="{{incomeDetailIdx}}" type="digit" placeholder="单价"></input>
         <view class="income-unfold" bindtap="removeOther" data-outIndex="{{incomeTypeIdx}}" data-inIndex="{{incomeDetailIdx}}"><text class="add" wx-if="{{incomeDetailItem.canRemove}}">x</text></view>
       </view>
       <view class="total">

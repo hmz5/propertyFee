@@ -81,15 +81,15 @@ Page({
     incomeList[index].area = areaVal; // 更新area
     incomeList[index].total = (Number(areaVal) * Number(incomeList[index].unitPrice)).toFixed(2); // 更新total
 
-    for (let i = 0, len = incomeList[index].detailList.length; i < len; i++) {
-      incomeList[index].detailList[i].area = areaVal;
-    }
+    // for (let i = 0, len = incomeList[index].detailList.length; i < len; i++) {
+    //   incomeList[index].detailList[i].area = areaVal;
+    // }
 
     this.setData({
       incomeList: incomeList
     });
 
-    this.countAllPrice(index);
+    // this.countAllPrice(index);
   },
   // 外层失去焦点的时候记录price中的值
   changeOutPrice: function (e) {
@@ -97,16 +97,16 @@ Page({
     let index = e.currentTarget.dataset.outindex;
     let incomeList = this.data.incomeList;
     incomeList[index].unitPrice = priceVal;
-
-    for (let i = 0, len = incomeList[index].detailList.length; i < len; i++) {
-      incomeList[index].detailList[i].unitPrice = priceVal;
-    }
+    incomeList[index].total = (Number(priceVal) * Number(incomeList[index].area)).toFixed(2); // 更新total
+    // for (let i = 0, len = incomeList[index].detailList.length; i < len; i++) {
+    //   incomeList[index].detailList[i].unitPrice = priceVal;
+    // }
 
     this.setData({
       incomeList: incomeList
     });
 
-    this.countAllPrice(index);
+    // this.countAllPrice(index);
   },
   // 内层area失去焦点
   changeInArea: function (e) {
@@ -116,15 +116,15 @@ Page({
     let incomeList = this.data.incomeList;
 
     incomeList[outIndex].detailList[inIndex].area = areaVal;
-    incomeList[outIndex].area = '';
-    incomeList[outIndex].unitPrice = '';
+    // incomeList[outIndex].area = '';
+    // incomeList[outIndex].unitPrice = '';
     incomeList[outIndex].detailList[inIndex].total = (Number(areaVal) * Number(incomeList[outIndex].detailList[inIndex].unitPrice)).toFixed(2);
 
     this.setData({
       incomeList: incomeList
     });
 
-    this.countAllPrice(outIndex);
+    // this.countAllPrice(outIndex);
   },
   // 内层price失去焦点
   changeInPrice: function (e) {
@@ -134,15 +134,15 @@ Page({
     let incomeList = this.data.incomeList;
 
     incomeList[outIndex].detailList[inIndex].unitPrice = priceVal;
-    incomeList[outIndex].area = '';
-    incomeList[outIndex].unitPrice = '';
+    // incomeList[outIndex].area = '';
+    // incomeList[outIndex].unitPrice = '';
     incomeList[outIndex].detailList[inIndex].total = (Number(priceVal) * Number(incomeList[outIndex].detailList[inIndex].area)).toFixed(2);
 
     this.setData({
       incomeList: incomeList
     });
 
-    this.countAllPrice(outIndex);
+    // this.countAllPrice(outIndex);
   },
   // 增加一个
   addOne: function (e) {
