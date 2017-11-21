@@ -81,9 +81,11 @@ Page({
     incomeList[index].area = areaVal; // 更新area
     incomeList[index].total = (Number(areaVal) * Number(incomeList[index].unitPrice)).toFixed(2); // 更新total
 
-    // for (let i = 0, len = incomeList[index].detailList.length; i < len; i++) {
-    //   incomeList[index].detailList[i].area = areaVal;
-    // }
+    for (let i = 0, len = incomeList[index].detailList.length; i < len; i++) {
+      incomeList[index].detailList[i].area = '';
+      incomeList[index].detailList[i].unitPrice = '';
+      incomeList[index].detailList[i].total = 0;
+    }
 
     this.setData({
       incomeList: incomeList
@@ -98,9 +100,13 @@ Page({
     let incomeList = this.data.incomeList;
     incomeList[index].unitPrice = priceVal;
     incomeList[index].total = (Number(priceVal) * Number(incomeList[index].area)).toFixed(2); // 更新total
-    // for (let i = 0, len = incomeList[index].detailList.length; i < len; i++) {
-    //   incomeList[index].detailList[i].unitPrice = priceVal;
-    // }
+
+
+    for (let i = 0, len = incomeList[index].detailList.length; i < len; i++) {
+      incomeList[index].detailList[i].area = '';
+      incomeList[index].detailList[i].unitPrice = '';
+      incomeList[index].detailList[i].total = 0;
+    }
 
     this.setData({
       incomeList: incomeList
@@ -116,8 +122,9 @@ Page({
     let incomeList = this.data.incomeList;
 
     incomeList[outIndex].detailList[inIndex].area = areaVal;
-    // incomeList[outIndex].area = '';
-    // incomeList[outIndex].unitPrice = '';
+    incomeList[outIndex].area = '';
+    incomeList[outIndex].unitPrice = '';
+    incomeList[outIndex].total = 0;
     incomeList[outIndex].detailList[inIndex].total = (Number(areaVal) * Number(incomeList[outIndex].detailList[inIndex].unitPrice)).toFixed(2);
 
     this.setData({
@@ -134,8 +141,9 @@ Page({
     let incomeList = this.data.incomeList;
 
     incomeList[outIndex].detailList[inIndex].unitPrice = priceVal;
-    // incomeList[outIndex].area = '';
-    // incomeList[outIndex].unitPrice = '';
+    incomeList[outIndex].area = '';
+    incomeList[outIndex].unitPrice = '';
+    incomeList[outIndex].total = 0;
     incomeList[outIndex].detailList[inIndex].total = (Number(priceVal) * Number(incomeList[outIndex].detailList[inIndex].area)).toFixed(2);
 
     this.setData({

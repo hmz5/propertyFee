@@ -12,7 +12,7 @@
       <!-- 二级标题  -->
       <view class="expend-item">
         <text class="expend-label">{{twoItem.expendName}}</text>
-        <input class="expend-input" type="digit" placeholder="人数" bindblur="changeOutArea" value="{{twoItem.area}}" data-oneindex="{{oneIndex}}" data-twoindex="{{twoIndex}}"></input>
+        <input class="expend-input" type="digit" placeholder="数量" bindblur="changeOutArea" value="{{twoItem.area}}" data-oneindex="{{oneIndex}}" data-twoindex="{{twoIndex}}"></input>
         <input class="expend-input" type="digit" placeholder="单价" bindblur="changeOutPrice" value="{{twoItem.unitPrice}}" data-oneindex="{{oneIndex}}" data-twoindex="{{twoIndex}}"></input>
         <view class="expend-unfold" bindtap="showThreeList" data-oneindex="{{oneIndex}}" data-twoindex="{{twoIndex}}">
           <text wx:if="{{twoItem.detailList}}" class="{{!twoItem.isShowList ? 'unfold' : 'unfold active'}}"></text>
@@ -25,7 +25,7 @@
         <view class="expend-item">
           <!-- 三级标题  -->
           <text class="expend-label">{{threeItem.expendName}}</text>
-          <input class="expend-input" bindblur="changeInArea" data-oneindex="{{oneIndex}}" data-twoindex="{{twoIndex}}" data-threeindex="{{threeIndex}}" type="digit" placeholder="人数"></input>
+          <input class="expend-input" bindblur="changeInArea" data-oneindex="{{oneIndex}}" data-twoindex="{{twoIndex}}" data-threeindex="{{threeIndex}}" type="digit" placeholder="数量"></input>
           <input class="expend-input" bindblur="changeInPrice" data-oneindex="{{oneIndex}}" data-twoindex="{{twoIndex}}" data-threeindex="{{threeIndex}}" type="digit" placeholder="单价"></input>
           <view class="expend-unfold" bindtap="removeOther" data-outIndex="{{expendTypeIdx}}" data-inIndex="{{expendDetailIdx}}">
             <text class="add" wx-if="{{threeItem.canRemove}}">x</text>

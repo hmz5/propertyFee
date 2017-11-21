@@ -324,7 +324,7 @@ Page({
     taxes: {
       index: 0,
       isShow: false,
-      list: [3.65, 3.67]
+      list: [3.65, 5.65, 6.67]
     },
     profit: {
       index: 0,

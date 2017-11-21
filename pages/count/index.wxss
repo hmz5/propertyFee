@@ -4,6 +4,10 @@
   background: #fff;
 }
 
+.noBor {
+  border: none!important;
+}
+
 .table-title {
   height: 80rpx;
   text-align: center;
@@ -40,6 +44,10 @@
   justify-content: center;
 }
 
+.table-header text:nth-last-of-type(1) {
+  border-right: none;
+}
+
 .u-number {
   width: 45rpx;
   flex-shrink: 0;
@@ -58,6 +66,10 @@
 .u-area, .u-unitPrice, .u-aggregate {
   flex: 1;
 }
+
+/* .u-aggregate {
+  border-right: none!important;
+} */
 
 .table-body {
   display: flex;
